@@ -4,6 +4,7 @@ for (const button of btn) {
   button.addEventListener("click", function () {
     var buttonpressed = this.textContent;
     check(buttonpressed);
+    Animation(buttonpressed);
   });
 }
 
@@ -48,4 +49,11 @@ function check(input) {
 document.addEventListener("keydown", function (event) {
   var key = event.key;
   check(key);
+  Animation(event.key);
 });
+function Animation(pressedkey) {
+  document.querySelector("." + pressedkey).classList.add("pressed");
+  setTimeout(function () {
+    document.querySelector("." + pressedkey).classList.remove("pressed");
+  }, 100);
+}
